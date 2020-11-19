@@ -40,12 +40,12 @@ def handle_data():
     print(selected_state, selected_policy, enf)
     log_d1, log_d2, full_d1, full_d2 = processor.get_state_analysis_with_policy_list(selected_state,
                                                                                      selected_policy, enf)
-    data1 = log_d1
-    data2 = log_d2
-    data3 = full_d2
-
-
-    return render_template('index.html', results="Analysis for", state=selected_state, data1=data1, data2=data2, enf_values=enf_values)
+    data1 = log_d1.values.tolist()
+    data2 = log_d2.values.tolist()
+    data3 = full_d1.values.tolist()
+    data4 = full_d2.values.tolist()
+    print(data2, data1)
+    return render_template('index.html', results="Analysis for", state=selected_state, data1=data1, data2=data2, data3=data3, data4=data4, enf_values=enf_values)
 
 
 if __name__ == "__main__":

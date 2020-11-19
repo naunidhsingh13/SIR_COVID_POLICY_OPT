@@ -11,8 +11,8 @@ for x,y in zip(d1, d2):
     print(x, " : ", y)
 print(obj.theta)
 
-# obj.dump()
-#
-# p = Processor()
-# p.load_all_states()
-# print(p.get_analysis_of("Illinois", {}))
+obj.dump()
+
+p = Processor()
+p.load_all_states()
+print(p.get_analysis_of("Illinois", {}))

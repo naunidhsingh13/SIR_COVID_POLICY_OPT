@@ -38,8 +38,8 @@ class StateData:
 
         alt_X_data = self.X_data.copy()
         for key in policy_detail:
-            if policy_detail[key] > 0:
-                alt_X_data[key] = policy_detail[key]
+            if int(policy_detail[key]) > 0:
+                alt_X_data[key] = float(policy_detail[key])/100
 
         Y_proj_data = self.data_projection(self.Y_start, alt_X_data, self.theta)
         if log_scale:
