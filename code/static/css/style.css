@@ -67,7 +67,8 @@ select {
     background-color:#000;
     border-radius: 18px;
     box-shadow: 15px 16px 28px 0 rgba(0,0,0,0.28);
-    height: 500px;
+    height: 450px;
+    width: 400px;
     padding:15px;
 }
 
