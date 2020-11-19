@@ -1,0 +1,131 @@
+#custom-border{
+    /* border: 0.5px dashed #000; */
+    /* margin: 0; */
+}
+.container-fluid{
+    font-family: 'Open Sans Condensed';
+}
+
+.container-fluid #header{
+    text-align: center;
+    font-weight: bolder;
+    color:#000;
+    padding:10px
+}
+
+#sub-header{
+    text-align: center;
+    color:#666;
+    padding:10px;
+    font-weight: bold;
+}
+
+#description-head{
+    font-weight: bold;
+    color: #e94256;
+}
+
+#description{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.dropdown-menu .dropdown-item{
+    font-weight: normal;
+    color:#000;
+}
+
+#control-panel{
+    box-shadow: 15px 16px 28px 0 rgba(0,0,0,0.31);
+    background-color: #fff;
+    border-radius: 18px;
+    margin-left: 15px;
+    padding: 20px;
+    height: 100%;
+}
+
+#enf{
+    border:1px solid #ccc;
+    width:70px;
+    background:#fff;
+    border-radius:4px;
+    height:50px;
+    text-align:center;
+    font-weight:bold;
+}
+
+select {
+    -webkit-appearance:none;
+}
+
+#title{
+    font-weight: bold;
+    padding: 10px;
+}
+
+#myChart{
+    background-color:#000;
+    border-radius: 18px;
+    box-shadow: 15px 16px 28px 0 rgba(0,0,0,0.28);
+    height: 630px;
+    padding:15px;
+}
+
+input[type="submit"]{
+    background-color: rgb(14, 144, 219);
+    border-radius: 6px;
+    border: none;
+    box-shadow: 15px 16px 28px 0 rgba(0,0,0,0.11);
+    color:#fff;
+    font-weight: bold;
+    width: 135px;
+    height: 45px;
+}
+
+
+.boxed label {
+display: inline-block;
+width: 220px;
+padding: 10px;
+border: solid 1px #ccc;
+transition: all 0.1s;
+border-radius: 4px;
+color: #000;
+font-weight: bold;
+}
+
+.boxed input[type="checkbox"], .boxed input[type="radio"] {
+display: none;
+}
+  
+input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
+    border: solid 1.5px #00B0FF;
+}
+
+hr{
+    margin: 0;
+    padding: 0;
+}
+
+td{
+    padding-left: 15px;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#999;
+}
+
+#how-it-works, #useful{
+    box-shadow: 15px 16px 28px 0 rgba(0,0,0,0.11);
+    background-color: #fff;
+    border-radius: 18px;
+    padding: 20px;
+}
+
+#result-title{
+    text-align: center;
+    font-weight: bold;
+}
+
+#result-title span{
+    color: #e94256;
+}

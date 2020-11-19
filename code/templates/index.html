@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Home</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- custom css-->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!-- Google Open Sans Condensed font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap" rel="stylesheet"> 
+    <!-- chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+             
+</head>
+
+<body>
+    <div class="container-fluid" id="custom-border">
+        <br>
+        <!-- Header -->
+        <div class="row" id="custom-border">
+            <div class="col" id="custom-border">
+                <h1 id="header">Effects of governmental policies in preventing COVID-19</h1>
+            </div>
+        </div>
+
+        <!-- Sub Header -->
+        <div class="row" id="custom-border">
+            <div class="col" id="custom-border">
+                <h3 id="sub-header">Choose your state to view the growth rates of infection</h3>
+            </div>
+        </div>
+
+        <br><br>
+        
+        <!-- description -->
+        <div class="row" id="custom-border">
+            <div class="col-3" id="custom-border">
+            </div>
+            <div class="col-6" id="custom-border">
+                <h3 id="description-head">Motivation</h3>
+                <p id="description">
+                    The novel coronavirus disease 2019 was announced as a pandemic by the World Health Organization (WHO) on March 11, 2020. 
+                    In response to this pandemic several governmental interventions have taken place for reducing the growth rate of infection. 
+                    By developing a mathematical model we plan to show how the enforcement of these policies by government and acceptability by people has reduced the growth rate of infection.
+                </p>
+            </div>
+            <div class="col-3" id="custom-border">
+            </div>
+        </div>
+
+        <br><br><br>
+        
+        <div class="container-fluid" id="results" style="background-color: #f5f5f7;padding: 30px;width:100%">
+            <div class="row">
+                <div class="col">
+                    <h4 id="result-title">{{results}} &nbsp;<span>{{state}}</span></h4>
+                </div>
+            </div>
+            <br>    
+            <div class="row" id="custom-border">
+                <canvas class="col-8" id="myChart" id="pre-policy" id="custom-border" align=center>
+
+                </canvas>
+              
+                <div class="col-4">
+                    <div class="row" id="custom-border">
+                        <div class="col" id="control-panel">
+                            <form  method="POST" action="{{ url_for('handle_data', _anchor='results') }}">
+                                
+                                <p id="title">Select State</p>
+                                <div class="row boxed" id="custom-border">
+                                    <div class="col" align=center>
+                                        <input type="radio" id="il" name="state" value="Illinois">
+                                        <label for="il">Illinois</label>
+                                    </div>
+                                    <div class="col" align=center>
+                                        <input type="radio" id="ny" name="state" value="New York">
+                                        <label for="ny">New York</label>
+                                    </div>
+                                </div>
+
+                                <br>
+                                <p id="title">Select Policy</p>
+
+                                <div class="row boxed" id="custom-border">
+                                    <div class="col" align=center>
+                                        <input type="checkbox" id="mask" name="policy" value="mask">
+                                        <label for="mask">Mask Mandate</label>
+                                    </div>
+                                    <div class="col" align=center>
+                                        <select id="enf" name="mask_enf">
+                                            {% for enf_value in enf_values %}
+                                            <option value="{{ enf_value }}">{{ enf_value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div class="row boxed" id="custom-border">
+                                    <div class="col" align=center>
+                                        <input type="checkbox" id="social_distance" name="policy" value="social_distance">
+                                        <label for="social_distance">Social Distance</label>
+                                    </div>
+                                     <div class="col" align=center>
+                                        <select id="enf" name="sd_enf">
+                                            {% for enf_value in enf_values %}
+                                            <option value="{{ enf_value }}">{{ enf_value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <br>
+
+                                <div class="row boxed" id="custom-border">
+                                    <div class="col" align=center>
+                                        <input type="checkbox" id="transit_stations" name="policy" value="transit_stations">
+                                        <label for="transit_stations">Transit Stations</label>
+                                    </div>
+                                     <div class="col" align=center>
+                                        <select id="enf" name="ts_enf">
+                                            {% for enf_value in enf_values %}
+                                            <option value="{{ enf_value }}">{{ enf_value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                 <br>
+
+                                <div class="row boxed" id="custom-border">
+                                    <div class="col" align=center>
+                                        <input type="checkbox" id="grocery_pharmacy" name="policy" value="groc_pharma">
+                                        <label for="grocery_pharmacy">Grocery & Pharmacy</label>
+                                    </div>
+                                     <div class="col" align=center>
+                                        <select id="enf" name="gph_enf">
+                                            {% for enf_value in enf_values %}
+                                            <option value="{{ enf_value }}">{{ enf_value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                 <br>
+
+                                <div class="row boxed" id="custom-border">
+                                    <div class="col" align=center>
+                                        <input type="checkbox" id="retail_recreation" name="policy" value="retail_recreation">
+                                        <label for="retail_recreation">Retail & Recreation</label>
+                                    </div>
+                                     <div class="col" align=center>
+                                        <select id="enf" name="rr_enf">
+                                            {% for enf_value in enf_values %}
+                                            <option value="{{ enf_value }}">{{ enf_value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <br>
+
+                                <div class="row boxed" id="custom-border">
+                                    <div class="col" align=center>
+                                        <input type="checkbox" id="sd_intent" name="policy" value="sd_intent">
+                                        <label for="sd_intent">Social Distance Intent</label>
+                                    </div>
+                                     <div class="col" align=center>
+                                        <select id="enf" name="sd_intent_enf">
+                                            {% for enf_value in enf_values %}
+                                            <option value="{{ enf_value }}">{{ enf_value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                 <br>
+
+                                <div class="row boxed" id="custom-border">
+                                    <div class="col" align=center>
+                                        <input type="checkbox" id="mask_intent" name="policy" value="mask_intent">
+                                        <label for="mask_intent">Mask Intent</label>
+                                    </div>
+                                     <div class="col" align=center>
+                                        <select id="enf" name="mask_intent_enf">
+                                            {% for enf_value in enf_values %}
+                                            <option value="{{ enf_value }}">{{ enf_value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <br>
+
+                                <div class="row boxed" id="custom-border">
+                                    <div class="col" align=center>
+                                        <input type="checkbox" id="workplace" name="policy" value="workplace">
+                                        <label for="workplace">Work Place</label>
+                                    </div>
+                                     <div class="col" align=center>
+                                        <select id="enf" name="workplace_enf">
+                                            {% for enf_value in enf_values %}
+                                            <option value="{{ enf_value }}">{{ enf_value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                 <br>
+
+                                <div class="row boxed" id="custom-border">
+                                    <div class="col" align=center>
+                                        <input type="checkbox" id="parks" name="policy" value="parks">
+                                        <label for="parks">Parks</label>
+                                    </div>
+                                     <div class="col" align=center>
+                                        <select id="enf" name="parks_enf">
+                                            {% for enf_value in enf_values %}
+                                            <option value="{{ enf_value }}">{{ enf_value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <br>
+                                <div class="row" id="custom-border">
+                                    <div class="col" align=center>
+                                        <input type="submit" value="submit">
+                                    </div>
+                                </div>
+                                <br>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+
+        <div class="row" id="custom-border">
+            <div class="col-3" id="custom-border">
+            </div>
+            <div class="col-6" id="custom-border">
+                <h3 id="description-head">How it works?</h3>
+                <p id="description">
+                    The model we use relies on lot of data from different sources. 
+                    Using the SIR model as the base, we attempted to configure a model to establish relationship between 
+                    transmission coefficient and impact due to policies in reducing the spread of the disease COVID-19.</p>
+            </div>
+            <div class="col-3" id="custom-border">
+            </div>
+        </div>  
+        <br>
+        <hr>
+        <br>
+        <footer align=center>
+            <table>
+                <tr>
+                    <td>
+                        <a>Contact</a>
+                    </td>
+                    <td>
+                        <a>About</a>
+                    </td>
+                    <td>
+                        <a>Help</a>
+                    </td>
+                </tr>
+            </table>  
+        </footer>
+    </div>
+
+<script>
+    var data1 = {{data1}};
+    var data2 = {{data2}};
+    
+    var ctx = document.getElementById('myChart');
+    Chart.defaults.global.defaultFontColor = '#fff';
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            datasets: [
+            {
+                label: 'With Policy',
+                data: data1,
+                    
+                borderWidth: 1,
+                fill: false,	
+                borderColor: '#e94256',
+                   backgroundColor:'#e94256',
+                   borderWidth: 3,
+            },
+            {
+                label: 'Without Policy',
+                data: data2,
+                    
+                borderWidth: 1,
+                fill: false,	
+                borderColor: '#FFF',
+                   backgroundColor:'#FFF',
+                   borderWidth: 3,
+            }],
+        },
+        options: {
+            legend: {
+                labels: {
+                    fontColor: "#fff",
+                }
+            },
+            scales: {
+                yAxes: [{
+                    gridLines: {
+                        zeroLineColor: '#fff',
+                    }
+                }]
+            },
+        }
+    });
+</script>
+
+</body>
+</html>
