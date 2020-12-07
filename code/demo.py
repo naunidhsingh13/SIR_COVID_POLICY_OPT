@@ -17,8 +17,7 @@ plt.plot(list(range(1, len(d3)+1)), d2)
 plt.plot(list(range(1, len(d3)+1)), d3)
 
 plt.show()
-
-# # obj.dump()
+obj.dump()
 # #
 # # #
 # p = Processor()

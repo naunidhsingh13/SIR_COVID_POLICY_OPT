@@ -29,7 +29,9 @@ class Processor:
             self.load_all_states()
 
         if state in self.stateDatas:
-            return self.stateDatas[state].get_projection_data(policy_detail=policy_details, log_scale=log_scale)
+            d_orig, d_smooth, d_pred = self.stateDatas[state].get_projection_data(policy_detail=policy_details,
+                                                                                  log_scale=log_scale)
+            return d_smooth, d_pred
         else:
             return [], []
 

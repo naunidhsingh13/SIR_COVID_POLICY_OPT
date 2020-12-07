@@ -20,7 +20,7 @@ class Model(StateData):
     def model2(theta, X):
         result = np.sum(theta[1:] * X.iloc[:, 1:], axis=1)+0.00001
         result = 1 + np.reciprocal(result)
-        return theta[0] * np.reciprocal(result)
+        return np.maximum(np.zeros(result.shape[0]), theta[0] * np.reciprocal(result))
 
     @staticmethod
     def hypothesis(theta, X):

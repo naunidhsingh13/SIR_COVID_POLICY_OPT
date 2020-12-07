@@ -24,7 +24,7 @@ def get_gaussian_weights(mu, sigma, rng=(-5, 6)):
 
 class StateOptimiser(Model):
 
-    _ALPHA_ = 0.5
+    _ALPHA_ = 0.1
     _ITER_ = 3000
     _DAY_RNG_ = 7
     _SIGMA_ = 1
@@ -111,6 +111,8 @@ class StateOptimiser(Model):
 
         :return:
         """
+        # Inorder to take the log, need to shift by 1 to handle 0 values
+        self.df["cum_confirmed_cases"] += 1
         self.Y_Orig_data = np.log(self.df["cum_confirmed_cases"])
         self.Y_Smooth_data = self.gauss_smooth_series(self.Y_Orig_data)
         self.Y_data = self.Y_Smooth_data.diff()
