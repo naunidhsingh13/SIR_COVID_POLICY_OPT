@@ -6,7 +6,7 @@ from Processor import Processor
 app = Flask(__name__)
 
 enf_values = [i for i in range(0, 105, 5)]
-states = ["select state", "Illinois", "New York", "California", "Florida", "Texas", "Iowa", "Washington", "Massachusetts", "Maryland"]
+states = ["select state", "Illinois", "New York", "California", "Florida", "Texas", "Iowa", "Washington", "Massachusetts", "Maryland", "Kentucky"]
 processor = Processor()
 
 @app.route('/')
