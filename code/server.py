@@ -45,8 +45,8 @@ def handle_data():
     data3 = full_d1.values.tolist()
     data4 = full_d2.values.tolist()
     print(data2, data1)
-    return render_template('index.html', results="Analysis for", state=selected_state, data1=data1, data2=data2, data3=data3, data4=data4, enf_values=enf_values)
+    return render_template('index.html', results="Analysis for", state=selected_state, data1=data1, data2=data2, data3=data3, data4=data4, enf_values=enf_values, states=states)
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=1234, host="0.0.0.0")
+    app.run(debug=True, port=1235, host="0.0.0.0")
