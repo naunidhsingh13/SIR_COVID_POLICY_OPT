@@ -13,7 +13,7 @@ processor = Processor()
 
 @app.route('/')
 def main():
-    return render_template('index.html', enf_values=enf_values)
+    return render_template('index.html', enf_values=enf_values, states=states)
 
 @app.route('/handle_data', methods=['POST'])
 def handle_data():
@@ -31,7 +31,7 @@ def handle_data():
     if "state" in request.form:
         selected_state = request.form['state']
     else:
-        return render_template('index.html', enf_values=enf_values, warn="selecting state is mandatory")
+        return render_template('index.html', enf_values=enf_values, warn="selecting state is mandatory", states=states)
 
     if "policy" in request.form:
         selected_policy = request.form.getlist('policy')

@@ -63,13 +63,13 @@
                 <div class="col-7" >
                     <div class="row">
 
-                         <canvas class="col" id="myChart" id="pre-policy" id="custom-border" align=center style="height: 440px;">
+                         <canvas class="col" id="myChart" id="pre-policy" id="custom-border" align=center style="height: 421px;">
 
                         </canvas>
                     </div>
-                    <br><br>
+                    <br>
                     <div class="row">
-                         <canvas class="col" id="myChart2" id="pre-policy" id="custom-border" align=center style="height: 440px;">
+                         <canvas class="col" id="myChart2" id="pre-policy" id="custom-border" align=center style="height: 421px;">
 
                          </canvas>
                     </div>
@@ -101,8 +101,7 @@
                                 </div>
 
 
-                                <p id="title">Select Policy</p>
-
+                                <p id="title">Select Policy <br> <span style="color:#999;font-size:13px">(lower value is better)</span></p>
                                 <!-- mask !-->
                                 <div class="row boxed" id="custom-border">
                                     <div class="col" align=center>
@@ -121,7 +120,7 @@
                                 <br>
 
                                 <!-- social_distance !-->
-                                <div class="row boxed" id="custom-border">
+                                <!-- <div class="row boxed" id="custom-border">
                                     <div class="col" align=center>
                                         <input type="checkbox" id="social_distance" name="policy" value="social_distance">
                                         <label for="social_distance">Social Distance</label>
@@ -136,7 +135,7 @@
 
                                 </div>
 
-                                <br>
+                                <br> -->
 
                                 <!-- sd_intent !-->
                                 <div class="row boxed" id="custom-border">
@@ -156,7 +155,6 @@
 
 
                                 <br>
-
                                 <!-- transit stations !-->
                                 <div class="row boxed" id="custom-border">
                                     <div class="col" align=center>
@@ -206,7 +204,6 @@
                                             {% endfor %}
                                         </select>
                                     </div>
-
                                 </div>
 
 
@@ -246,8 +243,8 @@
 
                                 </div>
 
-<!--<br>-->
-                                <div class="row" id="custom-border">
+                                <br>
+                                <div class="row" id="custom-border" style="padding-bottom: 0px;">
                                     <div class="col" align=center>
                                         <input type="submit" value="submit">
                                     </div>
