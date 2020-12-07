@@ -52,7 +52,7 @@
 
         <br><br><br>
         
-        <div class="container-fluid" id="results" style="padding: 30px;width:100%!important">
+        <div class="container" id="results" style="padding: 30px;width:100%!important">
             <div class="row">
                 <div class="col">
                     <h3 id="result-title">{{results}} &nbsp;<span>{{state}}</span></h3>
@@ -60,22 +60,22 @@
             </div>
             <br>    
             <div class="row">
-                <div class="col-8" >
+                <div class="col-7" >
                     <div class="row">
 
-                         <canvas class="col" id="myChart" id="pre-policy" id="custom-border" align=center>
+                         <canvas class="col" id="myChart" id="pre-policy" id="custom-border" align=center style="height: 440px;">
 
                         </canvas>
                     </div>
                     <br><br>
                     <div class="row">
-                         <canvas class="col" id="myChart2" id="pre-policy" id="custom-border" align=center>
+                         <canvas class="col" id="myChart2" id="pre-policy" id="custom-border" align=center style="height: 440px;">
 
                          </canvas>
                     </div>
                 </div>
               
-                <div class="col-4">
+                <div class="col-5">
                     <div class="row" id="custom-border">
                         <div class="col" id="control-panel">
                             <form  method="POST" action="{{ url_for('handle_data', _anchor='results') }}">
@@ -83,13 +83,20 @@
                                 <!-- state !-->
                                 <p id="title">Select State</p>
                                 <div class="row boxed" id="custom-border">
-                                    <div class="col" align=center>
+                                    <!-- <div class="col" align=center>
                                         <input type="radio" id="il" name="state" value="Illinois">
                                         <label for="il">Illinois</label>
                                     </div>
                                     <div class="col" align=center>
                                         <input type="radio" id="ny" name="state" value="New York" disabled>
-                                        <label for="ny">New York</label>
+                                        <label for="ny" style="color:#ccc">New York</label>
+                                    </div> -->
+                                    <div class="col" align=center>
+                                        <select id="state" name="state">
+                                            {% for state in states %}
+                                            <option value="{{ state }}">{{ state }}</option>
+                                            {% endfor %}
+                                        </select>
                                     </div>
                                 </div>
 
