@@ -15,7 +15,6 @@ class Processor:
         with open(pkl_filename, 'rb') as input:
             return pickle.load(input)
 
-
     def load_all_states(self):
 
         for filename in os.listdir(os.path.join(DATASET, OPT_DATA)):
@@ -33,9 +32,6 @@ class Processor:
             return self.stateDatas[state].get_projection_data(policy_detail=policy_details, log_scale=log_scale)
         else:
             return [], []
-
-
-
 
     def get_state_analysis_with_policy_list(self, state, policy_list, policy_data):
 
