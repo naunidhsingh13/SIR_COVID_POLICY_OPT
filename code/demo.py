@@ -2,7 +2,8 @@ import math
 from Optimizer import StateOptimiser
 # from Processor import Processor
 # #
-obj = StateOptimiser("California")
+state = "Florida"
+obj = StateOptimiser(state)
 # #
 obj.optimise_state_data()
 #
@@ -13,10 +14,14 @@ print(obj.theta)
 
 import matplotlib.pyplot as plt
 
-plt.plot(list(range(1, len(d3)+1)), d2)
-plt.plot(list(range(1, len(d3)+1)), d3)
-
+plt.plot(list(range(1, len(d3)+1)), d2, label="Actual")
+plt.plot(list(range(1, len(d3)+1)), d3, label="Estimate")
+plt.title("{}".format(state))
+plt.xlabel("Days")
+plt.ylabel("Cumulative Count (log scale)")
+plt.legend()
 plt.show()
+plt.savefig("datasets/figs/{}_plot.png".format(state))
 obj.dump()
 # #
 # # #
